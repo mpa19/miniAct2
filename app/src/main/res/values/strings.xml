@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MiniAct2</string>
+    <string name="edit1">Introducir palabra</string>
+    <string name="edit2">Introducir numero</string>
+    <string name="boton">Siguiente</string>
+    <string name="text1">MiniAct2</string>
+    <string name="text2">MiniAct2</string>
+    <string name="toast">Numero necesario</string>
+    <string name="btn2">Go back</string>
+
+
+
+</resources>
