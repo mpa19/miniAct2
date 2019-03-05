@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,7 +14,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        TextView tv1 = findViewById(R.id.tv1);
+        Bundle parametros = this.getIntent().getExtras();
+        if(parametros != null){
+            String datos = parametros.getString("Frase");
+            tv1.setText(datos);
+        }
     }
 
     public void send(View view){
@@ -26,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
                             getString(R.string.toast), Toast.LENGTH_SHORT).show();
 
         }else {
-            a.putExtra("palabra", ed1.getText().toString());
+            if(!ed1.getText().toString().isEmpty()) a.putExtra("palabra", ed1.getText().toString());
+
             a.putExtra("numero", ed2.getText().toString());
             startActivity(a);
         }
