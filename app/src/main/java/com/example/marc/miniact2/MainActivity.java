@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
             a.putExtra("numero", ed2.getText().toString());
             startActivity(a);
+            finish();
         }
 
 
