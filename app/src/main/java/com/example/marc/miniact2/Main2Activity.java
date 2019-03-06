@@ -37,6 +37,7 @@ public class Main2Activity extends AppCompatActivity {
         Intent a = new Intent(this, MainActivity.class);
         a.putExtra("Frase",tv1.getText().toString());
         startActivity(a);
+        finish();
 
     }
 }
