@@ -34,10 +34,11 @@ public class Main2Activity extends AppCompatActivity {
 
     public void back(View view){
         TextView tv1 = findViewById(R.id.tv2);
-        Intent a = new Intent(this, MainActivity.class);
+        Intent a = new Intent();
         a.putExtra("Frase",tv1.getText().toString());
-        startActivity(a);
+        setResult(RESULT_OK,a);
         finish();
+
 
     }
 }

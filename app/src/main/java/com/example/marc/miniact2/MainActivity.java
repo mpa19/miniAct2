@@ -9,23 +9,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    TextView tv1;
+    EditText ed1;
+    EditText ed2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView tv1 = findViewById(R.id.tv1);
-        Bundle parametros = this.getIntent().getExtras();
-        if(parametros != null){
-            String datos = parametros.getString("Frase");
-            tv1.setText(datos);
-        }
+        tv1 = findViewById(R.id.tv1);
     }
 
     public void send(View view){
         Intent a = new Intent(this, Main2Activity.class);
-        EditText ed1 = findViewById(R.id.ed1);
-        EditText ed2 = findViewById(R.id.ed2);
+        ed1 = findViewById(R.id.ed1);
+        ed2 = findViewById(R.id.ed2);
         if(ed2.getText().toString().isEmpty()){
                     Toast.makeText(getApplicationContext(),
                             getString(R.string.toast), Toast.LENGTH_SHORT).show();
@@ -34,11 +31,18 @@ public class MainActivity extends AppCompatActivity {
             if(!ed1.getText().toString().isEmpty()) a.putExtra("palabra", ed1.getText().toString());
 
             a.putExtra("numero", ed2.getText().toString());
-            startActivity(a);
-            finish();
+            startActivityForResult(a,2);
         }
+    }
 
-
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == 2){
+            if(resultCode == RESULT_OK){
+                ed1.getText().clear();
+                ed2.getText().clear();
+                tv1.setText(data.getStringExtra("Frase"));
+            }
+        }
     }
 }
